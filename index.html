@@ -281,9 +281,21 @@ body {
 
 .plans-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-24);
     margin-top: var(--space-32);
+}
+
+@media (max-width: 1200px) {
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .plan-card {
@@ -474,10 +486,6 @@ footer {
         padding: 40px var(--space-16);
     }
 
-    .plans-grid {
-        grid-template-columns: 1fr;
-    }
-
     .benefits-grid {
         grid-template-columns: 1fr;
     }
@@ -493,6 +501,7 @@ footer {
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <img src="logo.png" alt="GuardianPlus Logo" style="max-width: 300px; height: auto; margin: 0 auto var(--space-24); display: block;">
             <h1>GuardianPlus</h1>
             <p>Protección inteligente por suscripción. Sin inversión inicial, solo la tranquilidad que necesitas</p>
             <button class="btn btn--hero" onclick="scrollToPlans()">Ver Planes</button>
@@ -556,7 +565,7 @@ footer {
                 <div class="plan-card">
                     <h3 class="plan-name">Plan Básico</h3>
                     <p class="plan-description">Ideal para hogares pequeños y departamentos</p>
-                    <div class="plan-price">$499<span>/mes</span></div>
+                    <div class="plan-price">$69.000<span> COP/mes</span></div>
                     <ul class="plan-features">
                         <li>Alarma central con notificación móvil</li>
                         <li>4 cámaras de seguridad estándar</li>
@@ -573,7 +582,7 @@ footer {
                     <span class="plan-badge">Más popular</span>
                     <h3 class="plan-name">Plan Estándar</h3>
                     <p class="plan-description">Perfecto para casas y negocios pequeños</p>
-                    <div class="plan-price">$899<span>/mes</span></div>
+                    <div class="plan-price">$99.000<span> COP/mes</span></div>
                     <ul class="plan-features">
                         <li>Cámaras de alta resolución</li>
                         <li>Visión nocturna avanzada</li>
@@ -590,7 +599,7 @@ footer {
                 <div class="plan-card">
                     <h3 class="plan-name">Plan Premium</h3>
                     <p class="plan-description">Seguridad integral para el hogar moderno</p>
-                    <div class="plan-price">$1,499<span>/mes</span></div>
+                    <div class="plan-price">$199.000<span> COP/mes</span></div>
                     <ul class="plan-features">
                         <li>Todo lo del Plan Estándar</li>
                         <li>Barreras perimetrales electrónicas</li>
@@ -608,7 +617,7 @@ footer {
                 <div class="plan-card">
                     <h3 class="plan-name">Plan Profesional</h3>
                     <p class="plan-description">Solución empresarial completa</p>
-                    <div class="plan-price">$3,999<span>/mes</span></div>
+                    <div class="plan-price">$250.000<span> COP/mes</span></div>
                     <ul class="plan-features">
                         <li>Todo lo de los planes anteriores</li>
                         <li>Cámaras 4K con IA avanzada</li>
@@ -713,7 +722,11 @@ footer {
         }
 
         function handleContact() {
-            alert('¡Gracias por tu interés!\n\nEn breve un asesor de GuardianPlus se pondrá en contacto contigo para:\n\n• Evaluar tus necesidades específicas\n• Realizar una visita técnica gratuita\n• Diseñar una solución personalizada\n• Ofrecerte una cotización sin compromiso\n\n¿Deseas que te contactemos por WhatsApp, email o teléfono?');
+            const confirmMsg = '¡Gracias por tu interés!\n\nEn breve un asesor de GuardianPlus se pondrá en contacto contigo para:\n\n• Evaluar tus necesidades específicas\n• Realizar una visita técnica gratuita\n• Diseñar una solución personalizada\n• Ofrecerte una cotización sin compromiso\n\nContáctanos por WhatsApp al:\n+57 300 555 1112';
+            
+            if (confirm(confirmMsg + '\n\n¿Deseas abrir WhatsApp ahora?')) {
+                window.open('https://wa.me/573005551112?text=Hola, estoy interesado en GuardianPlus y me gustaría recibir más información sobre los planes de seguridad.', '_blank');
+            }
         }
 
         // Add smooth scroll behavior
